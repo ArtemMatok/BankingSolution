@@ -1,3 +1,5 @@
+using BankingSolutionWebApi.Application.BankingAccount;
+using BankingSolutionWebApi.Application.BankingAccount.Interfaces;
 using BankingSolutionWebApi.Application.User;
 using BankingSolutionWebApi.Application.User.Configuration;
 using BankingSolutionWebApi.Application.User.Decorators;
@@ -91,15 +93,20 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAutoMapper(typeof(BankingAccountMapper));
+
+
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterDtoValidator>();
 //configurations
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JWT"));
 //Services
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-
+builder.Services.AddScoped<IBankingAccountService, BankingAccountService>();
 
 //Repositories
+builder.Services.AddScoped<IBankingAccountRepository, BankingAccountRepository>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 //Decorators
 builder.Services.AddScoped<IUserManagerDecorator<AppUser>, UserManagerDecorator<AppUser>>();

@@ -10,12 +10,9 @@ using System.Threading.Tasks;
 
 namespace BankingSolutionWebApi.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<AppUser>(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) : base(options)
-        {
-            
-        }
+        public DbSet<BankingAccount> BankingAccounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

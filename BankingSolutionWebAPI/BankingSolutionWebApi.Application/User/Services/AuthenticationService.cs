@@ -35,14 +35,6 @@ namespace BankingSolutionWebApi.Application.User.Services
                 return Result<NewUserDto>.Failure("Email not found and/or password incorrect");
             }
 
-            var roles = await _userManager.GetUserRoles(user);
-            var userRole = roles.FirstOrDefault();
-
-            if (string.IsNullOrEmpty(userRole))
-            {
-                return Result<NewUserDto>.Failure("Role assignment failed. No role found for the user.");
-            }
-
             var newUserDto = new NewUserDto(
                 user.UserName,
                 user.Email,

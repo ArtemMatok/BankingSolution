@@ -9,5 +9,6 @@ namespace BankingSolutionWebApi.Domain.Entities
 {
     public class AppUser : IdentityUser
     {
+        public List<BankingAccount> BankingAccounts { get; set; }
     }
 }

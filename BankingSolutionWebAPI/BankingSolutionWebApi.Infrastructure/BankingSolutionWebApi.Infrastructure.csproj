@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BankingSolutionWebApi.Application\BankingSolutionWebApi.Application.csproj" />
     <ProjectReference Include="..\BankingSolutionWebApi.Domain\BankingSolutionWebApi.Domain.csproj" />
   </ItemGroup>
 

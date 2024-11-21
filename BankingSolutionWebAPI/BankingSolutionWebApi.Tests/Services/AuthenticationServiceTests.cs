@@ -79,8 +79,6 @@ namespace BankingSolutionWebApi.Tests.Services
                 .ReturnsAsync(appUser);
             _signInManager.Setup(x => x.CheckPasswordSignInAsync(appUser, loginDto.Password, false))
                 .ReturnsAsync(SignInResult.Success);
-            _userManager.Setup(x => x.GetUserRoles(It.IsAny<AppUser>()))
-                .ReturnsAsync(new List<string> { "User" });
 
             var result = await _authenticationService.Login(loginDto);
 

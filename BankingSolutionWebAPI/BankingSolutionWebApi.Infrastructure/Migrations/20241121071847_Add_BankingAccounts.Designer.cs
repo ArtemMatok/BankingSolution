@@ -4,6 +4,7 @@ using BankingSolutionWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingSolutionWebApi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241121071847_Add_BankingAccounts")]
+    partial class Add_BankingAccounts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,7 +145,7 @@ namespace BankingSolutionWebApi.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "04dd8420-c327-4616-8fcd-ed06ecb72153",
+                            Id = "666dfefc-2011-4a18-bab0-b1eaefa07713",
                             Name = "User",
                             NormalizedName = "USER"
                         });
