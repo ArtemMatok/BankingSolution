@@ -1,5 +1,7 @@
 using BankingSolutionWebApi.Application.BankingAccount;
 using BankingSolutionWebApi.Application.BankingAccount.Interfaces;
+using BankingSolutionWebApi.Application.Transactions;
+using BankingSolutionWebApi.Application.Transactions.Interfaces;
 using BankingSolutionWebApi.Application.User;
 using BankingSolutionWebApi.Application.User.Configuration;
 using BankingSolutionWebApi.Application.User.Decorators;
@@ -103,10 +105,12 @@ builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JWT"))
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IBankingAccountService, BankingAccountService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 //Repositories
 builder.Services.AddScoped<IBankingAccountRepository, BankingAccountRepository>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();    
 
 //Decorators
 builder.Services.AddScoped<IUserManagerDecorator<AppUser>, UserManagerDecorator<AppUser>>();

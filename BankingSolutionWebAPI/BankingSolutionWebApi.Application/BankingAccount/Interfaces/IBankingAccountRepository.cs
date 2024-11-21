@@ -16,5 +16,6 @@ public interface IBankingAccountRepository
     Task<Result<List<BankingAccountEntity>>> GetBankingAccountsByUserId(string userId);
     Task<Result<BankingAccountEntity>> GetBankingAccountByCardNumber(string cardNumber);
     Task<PageResultResponse<BankingAccountEntity>> GetAllBankingAccounts(BankingAccountFilter filter);
+    Task<bool> IsBankingAccountLinkedToUser(string cardNumber, string userId);
 }
 

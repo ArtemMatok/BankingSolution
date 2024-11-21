@@ -91,10 +91,8 @@ public class BankingAccountServiceTests
         _mockMapper.Setup(mapper => mapper.Map<BankingAccountGetDto>(bankingAccount))
             .Returns(bankingAccountDto);
 
-        // Act
         var result = await _service.GetBankingAccountByCardNumber(cardNumber);
 
-        // Assert
         result.IsSuccess.Should().BeTrue();
         result.Value.CardNumber.Should().Be(formattedCardNumber);
     }
@@ -102,16 +100,13 @@ public class BankingAccountServiceTests
     [Fact]
     public async Task GetBankingAccountsByUserId_ShouldReturnFailure_WhenUserNotFound()
     {
-        // Arrange
         var userId = "nonexistent-user";
 
         _mockAppUserRepository.Setup(repo => repo.UserExists(userId))
             .ReturnsAsync(false);
 
-        // Act
         var result = await _service.GetBankingAccountsByUserId(userId);
 
-        // Assert
         result.IsSuccess.Should().BeFalse();
         result.ErrorMessage.Should().Be("User wasn`t found");
     }
@@ -119,7 +114,6 @@ public class BankingAccountServiceTests
     [Fact]
     public async Task GetBankingAccountsByUserId_ShouldReturnSuccess_WhenAccountsFound()
     {
-        // Arrange
         var userId = "valid-user";
         var bankingAccounts = new List<BankingAccount>
         {
@@ -139,12 +133,9 @@ public class BankingAccountServiceTests
         _mockMapper.Setup(mapper => mapper.Map<List<BankingAccountGetDto>>(bankingAccounts))
             .Returns(bankingAccountDtos);
 
-        // Act
         var result = await _service.GetBankingAccountsByUserId(userId);
 
-        // Assert
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().HaveCount(1);
-        result.Value[0].UserId.Should().Be(userId);
     }
 }

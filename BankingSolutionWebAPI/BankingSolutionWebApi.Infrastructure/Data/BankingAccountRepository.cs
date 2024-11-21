@@ -16,6 +16,7 @@ namespace BankingSolutionWebApi.Infrastructure.Data
         ApplicationDbContext _context    
     ) : IBankingAccountRepository
     {
+
         public async Task<Result<BankingAccount>> CreateBankingAccount(BankingAccount bankingAccount)
         {
             try
@@ -63,6 +64,14 @@ namespace BankingSolutionWebApi.Infrastructure.Data
                 .ToListAsync();
 
             return Result<List<BankingAccount>>.Success(result);
+        }
+
+        public async Task<bool> IsBankingAccountLinkedToUser(string cardNumber, string userId)
+        {
+            var result = await _context.Users
+                .AnyAsync(user => user.BankingAccounts.Any(account => account.CardNumber.Contains(cardNumber)));
+
+            return result;
         }
     }
 }
