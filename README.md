@@ -58,3 +58,6 @@ Run the application using this command:
 ```bash
 dotnet run --project BankingSolutionWebApi
 ```
+
+### 6: About Cards number
+Write card`s number without space
