@@ -36,3 +36,14 @@ This project is a REST API for a banking application. It provides features such 
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/your-username/BankingSolutionWebApi.git
+
+### 2. Navigate to the project directory
+```bash
+cd BankingSolutionWebApi
+
+### 3. Update the database connection string
+Update the ConnectionStrings section in appsettings.json:
+```bash
+"ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=BankingSolution;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
