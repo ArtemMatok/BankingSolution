@@ -1,5 +1,4 @@
 # BankingSolution
-# Banking Solution Web API
 
 ## Project Description
 This project is a REST API for a banking application. It provides features such as account management, fund transactions (deposit, withdraw, transfer), and user management. The solution is built using C# with a clean architecture approach.
